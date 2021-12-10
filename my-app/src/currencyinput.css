@@ -1,0 +1,35 @@
+body{
+    outline: none;
+}
+
+.group{
+    background-color: #1e2764;
+    min-width: 160px;
+    width: 90%;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    margin: auto;
+    font-weight: 800;
+    
+}
+
+input,select{
+    background: none;
+    color: #eee8f3;
+    border: none;
+}
+
+input{
+    width: 90%;
+    font-size: larger;
+    padding-left:10px;
+
+}
+select{
+    background: #0e1333;
+    border: 1px solid #aa96b9;
+    border-radius: 0px 10px 10px 0px ;
+    color: #eee8f3;
+    padding: 15px;
+}
