@@ -9,12 +9,27 @@ function App() {
   const [amount2, setAmount2] = useState(1);
   const [currency1, setCurrency1] = useState("USD");
   const [currency2, setCurrency2] = useState("NGN");
+  const [loading, setLoading] = useState("loading...");
   const [rates, setRates] = useState([]);
 
   useEffect(() => {
-    axios.get('http://data.fixer.io/api/latest?access_key=3ee75da46bbed49d7301c1f4901377bc').then((res) => {
-      setRates(res.data.rates)
-    })
+
+    async function getdata(){
+      const result =await  axios.get('/api/v1/currencyapi');
+      try {
+        setRates(result.data.rates)
+        setLoading('')
+      } catch (error) {
+        setLoading('An error occurred')
+        console.log(error)
+      }
+      finally{
+        return result
+      }
+    }
+    getdata();
+
+
   }, [])
 
 
@@ -53,6 +68,7 @@ function App() {
     <div className='main'>
       <h2>Get the latest and most accurate conversion rates now!</h2>
       <h1>Pick Your Currency</h1>
+      <h1>{loading}</h1>
       <CurrrencyInput onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change} currencies={Object.keys(rates)} amount={amount1} currency={currency1} />
       <br></br>
       <CurrrencyInput onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change} currencies={Object.keys(rates)} amount={amount2} currency={currency2} />
@@ -61,3 +77,5 @@ function App() {
 }
 
 export default App;
+
+
