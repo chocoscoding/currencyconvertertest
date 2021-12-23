@@ -10,7 +10,7 @@ Tools used:
 *Node-Fetch*
 *Cors*
 
-View it online at : 
+# View it online at : [https://chocoscurrency.herokuapp.com/]
 
 ## Available Scripts
 
